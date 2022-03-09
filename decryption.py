@@ -7,15 +7,14 @@ def load_key():
     """
     key = "jUejSkqUa9RoJW-ugGpGQFxvIHEW9o0f_pMqXdY2HN8="
 
-def encrypt_message(message):
+def decrypt_message(message):
     """
-    Encrypts a message
+    Decrypts an encrypted message
     """
     load_key()
-    encoded_message = message.encode()
     f = Fernet(key)
-    encrypted_message = f.encrypt(encoded_message)
-    print("Encryption: ", encrypted_message)
-    
+    decrypted_message = f.decrypt(message)
+    print("Decryption:","'" + decrypted_message.decode() + "'")
+
 if __name__ == "__main__":
-    encrypt_message(input("Enter Text to Encrypt: "))
+    decrypt_message(bytes(input("Enter Text to Encrypt: ").encode("UTF-8")))
